@@ -9,11 +9,11 @@
 <head>
     <?php
     $website_title = 'Добавление статьи';
-    require 'layout/head.php';
+    require 'layouts/head.php';
     ?>
 </head>
 <body>
-    <?php require 'layout/header.php'; ?>
+    <?php require 'layouts/header.php'; ?>
 
     <main class="container mt-5">
         <div class="row">
@@ -35,10 +35,10 @@
                 </form>
             </div>
 
-            <?php require 'layout/aside.php'; ?>
+            <?php require 'layouts/aside.php'; ?>
         </div>
     </main>
-    <?php require 'layout/footer.php'; ?>
+    <?php require 'layouts/footer.php'; ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
