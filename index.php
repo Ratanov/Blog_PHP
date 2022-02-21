@@ -3,11 +3,11 @@
     <head>
         <?php
         $website_title = 'Блог';
-        require 'layout/head.php';
+        require 'layouts/head.php';
         ?>
     </head>
     <body>
-    <?php require 'layout/header.php'; ?>
+    <?php require 'layouts/header.php'; ?>
 
     <main class="container mt-5">
         <div class="row">
