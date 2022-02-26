@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php
-    $website_title = 'Регистрация';
+    $website_title = 'Авторизация';
     require 'layouts/head.php';
     ?>
 </head>
@@ -20,13 +20,10 @@
                     <label for="pass">Пароль</label>
                     <input type="password" name="pass" id="pass" class="form-control">
 
-                    <div class="alert alert-danger mt-3" id="errorBlock"></div>
+                    <div class="alert alert-danger mt-3" id="error-block"></div>
 
                     <button type="button" class="btn btn-success mt-3" id="auth_user">Войти</button>
                 </form>
-                <?php else: ?>
-                <h2><?=$_COOKIE['login']?></h2>
-                    <button class="btn btn-danger" id="exit_btn">Выйти</button>
                 <?php endif; ?>
             </div>
 
@@ -36,9 +33,7 @@
     <?php require 'layouts/footer.php'; ?>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
+    <script> // ToDo: remake with fetch
         $('#auth_user').click(function () {
             const login = $('#login').val();
             const pass = $('#pass').val();
@@ -51,27 +46,11 @@
                 dataType: 'html',
                 success: function (data) {
                     if(data === "Готово") {
-                        document.location.reload(true);
+                        document.location.replace('/');
                     }
                     else {
-                        $('#errorBlock').show().text(data);
+                        $('#error-block').show().text(data);
                     }
-                }
-            });
-        })
-
-        $('#exit_btn').click(function () {
-            const login = $('#login').val();
-            const pass = $('#pass').val();
-
-            $.ajax({
-                url: 'reg/exit.php',
-                type: 'POST',
-                cache: false,
-                data: {'login': login, 'pass': pass},
-                dataType: 'html',
-                success: function (data) {
-                    document.location.reload(true);
                 }
             });
         })

@@ -1,6 +1,6 @@
-<?php
+<?php // запрет просмотра страницы (редирект на страницу reg.php), если пользователь не авторизован
     if(!isset($_COOKIE['login'])){
-        header('Location: /reg.php');
+        header('Location: /reg.php'); //
         exit();
     }
 ?>
@@ -29,7 +29,7 @@
                     <label for="text">Текст статьи</label>
                     <textarea name="text" id="text" class="form-control"></textarea>
 
-                    <div class="alert alert-danger mt-3" id="errorBlock"></div>
+                    <div class="alert alert-danger mt-3" id="error-block"></div>
 
                     <button type="button" class="btn btn-success mt-3" id="article_btn">Добавить</button>
                 </form>
@@ -41,9 +41,7 @@
     <?php require 'layouts/footer.php'; ?>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
+    <script> // ToDo: remake with fetch
         $('#article_btn').click(function () {
             const title = $('#title').val();
             const intro = $('#intro').val();
@@ -58,10 +56,10 @@
                 success: function (data) {
                     if(data == "Готово") {
                         $('#article_btn').text('Все готово').attr('disabled','disabled');
-                        $('#errorBlock').hide();
+                        $('#error-block').hide();
                     }
                     else {
-                        $('#errorBlock').text(data).show();
+                        $('#error-block').text(data).show();
                     }
                 }
             });
